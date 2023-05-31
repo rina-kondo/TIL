@@ -1,2 +1,2 @@
 # TIL
-To I Learn
+today I learned.
