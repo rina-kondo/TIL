@@ -13,9 +13,9 @@ $ cd ディレクトリ名
 $ npm init --yes
 ```
 package.jsonが作成されるので、下記内容を変更
-```json
+```js
 "main":"index.js",
-↓↓↓
+// ↓↓↓
 "main":"index.js",
 "type":"module",
 ```
@@ -39,7 +39,7 @@ $ npx tsc --init
 `tsconfig.json`はTypeScriptコンパイラの設定ファイル。
 
 tsconfig.jsonを編集。
-```json
+```js
 // トランスパイルの程度(デフォルト: "es2016")
 "target": "es2020",
 
