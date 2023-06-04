@@ -40,27 +40,24 @@ $ npx tsc --init
 
 tsconfig.jsonを編集。
 ```js
-// トランスパイルの程度(デフォルト: "es2016")
-"target": "es2020",
-
-// moduleコンパイラ(デフォルト: "commonjs")
-"module":"esnext"
-
-// moduleResolutionコンパイラオプションをnode(コメント解除)する
-"moduleResolution":"node"
-
-// outDirコンパイラオプション(コンパイラ出力ディレクトリを指定）
-// コメントアウトを解除して出力ディレクトリを変更
-↓
-"outDir": "./dist"
-
-// includeオプション (コンパイル対象の指定)
 {
 	"compilerOptions":{
-		...
+		// トランスパイルの程度(デフォルト: "es2016")
+		"target": "es2020",
+
+		// moduleコンパイラ(デフォルト: "commonjs")
+		"module":"esnext"
+
+		// moduleResolutionコンパイラオプションをnode(コメント解除)する
+		"moduleResolution":"node"
+
+		// outDirコンパイラオプション(コンパイラ出力ディレクトリを指定）
+		// コメントアウトを解除して出力ディレクトリを変更
+		↓
+		"outDir": "./dist"
 	},
-	// ↓追加
-	"include":["./src/**/*.ts"]
+	// includeオプション (コンパイル対象の指定)
+	"include":["./src/**/*.ts"]  	// 追加
 }
 ```
 
