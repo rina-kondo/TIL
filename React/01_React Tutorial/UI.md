@@ -20,6 +20,7 @@ React では、HTMLと CSS と JavaScript を、独自の「コンポーネン�
   <summary>コード例</summary>
 
 `<Profile />`みたいな感じで使えます
+	
 ```js:App.js
 function Profile() {
   return (
@@ -40,6 +41,7 @@ export default function Gallery(){
 	);
 }
 ```
+	
 </details>
 
 ### 注意点   
@@ -106,24 +108,25 @@ Create React Appを使うと、 `src/App.js`がルートコンポーネントフ
 ## {}でJavaScriptを含める
 {}で変数を扱える。使える箇所は、①テキストとして、②属性として のみです。
 <details>
-	<summary>コード例</summary>
-	```js:App.js
-	const today = new Date();
+<summary>コード例</summary>
 
-	function formatDate(date) {
-	  return new Intl.DateTimeFormat(
-	    'en-US',
-	    { weekday: 'long' }
-	  ).format(date);
-	}
+```js:App.js
+const today = new Date();
 
-	export default function TodoList() {
-	  return (
-	    <h1>To Do List for {formatDate(today)}</h1>
-	  );
-	}
+function formatDate(date) {
+  return new Intl.DateTimeFormat(
+    'en-US',
+    { weekday: 'long' }
+  ).format(date);
+}
 
-	```
+export default function TodoList() {
+  return (
+    <h1>To Do List for {formatDate(today)}</h1>
+  );
+}
+```
+	
 </details>
 
 ### ダブル{}用途例
@@ -131,6 +134,7 @@ JSX 内でインラインの CSS スタイルを使うときなどに使用す�
 `{{ }}`はラップしているだけのただのオブジェクトです。
 <details>
 <summary>コード例</summary>
+	
 ```js:App.js
 export default function TodoList() {
   return (
@@ -145,6 +149,7 @@ export default function TodoList() {
   );
 }
 ```	
+	
 </details>
 
 **注意：** インラインの `style` 属性はキャメルケースで書きます。例えば HTML で `<ul style="background-color: black">` となっていれば、あなたのコンポーネントでは `<ul style={{ backgroundColor: 'black' }}>` になります。
@@ -154,6 +159,7 @@ export default function TodoList() {
 
 ### props のデフォルト値を指定する 
 props にデフォルト値を指定したい場合、分割代入の中でパラメータ名の直後に = とデフォルト値を書くことができます
+
 ```js
 function Avatar({ person, size = 100 }) {
   // ...
@@ -164,6 +170,7 @@ function Avatar({ person, size = 100 }) {
 
 ### props のデフォルト値を指定する 
 propsの受け渡しが長くなる場合。。
+
 ```js
 function Profile({ person, size, isSepia, thickBorder }) {
   return (
@@ -178,6 +185,7 @@ function Profile({ person, size, isSepia, thickBorder }) {
   );
 }
 ```
+
 簡潔にpropsを受け渡す場合
 
 ```js
@@ -198,12 +206,15 @@ function Profile(props) {
 
 ### childrenとしてJSXを渡す
 HTMLのこんなネストを
+
 ```html
 <div>
   <img />
 </div>
 ```
+
 同様に独自コンポーネントもネストしたくなることがあります。
+
 ```js
 <Card>
   <Avatar />
@@ -237,6 +248,7 @@ export default function Profile() {
   );
 }
 ```
+
 `<Card>`自身はReactの組み込みコンポーネントではない。  
 `children` プロパティを有するコンポーネントには、親に任意の JSX で「埋めて」もらうための「穴」が開いている、と考えることができます。`children` は、パネルやグリッドのような視覚的に何かを囲む要素に使うことができます。
 
@@ -245,7 +257,7 @@ export default function Profile() {
 Illustrated by [Rachel Lee Nabors](http://rachelnabors.com/)
 
 <details>
-  <summary>チャレンジ問題1</summary>
+<summary>チャレンジ問題1</summary>
   
 ```js
 import { getImageUrl } from './utils.js';
@@ -309,8 +321,8 @@ export default function Gallery() {
     </div>
   );
 }
-
 ```
+	
 </details>
 
 
@@ -319,7 +331,7 @@ export default function Gallery() {
 <details>
 <summary>コード</summary>
 	
-```js{359}
+```js
 function Item({ name, isPacked }) {
 return <li className="item">{name}</li>; //ここを条件分岐させる
 }
@@ -346,6 +358,7 @@ export default function PackingList() {
   );
 }
 ```
+
 </details>
 
 ### if/else文
@@ -382,87 +395,90 @@ JavaScript は条件をテストする際、左の辺を自動的に真偽値に
 これを修正するには、左の値を真偽値にしてください： `messageCount > 0 && <p>New messages</p>`。
 
 <details>
-  <summary>チャレンジ問題2</summary>
-  ```js
-  function Item({ name, importance }) {
-	  return (
-	    <li className="item">
-	      {name}
-	      {importance > 0 && ' '}
-	      {importance > 0 &&
-	        <i>(Importance: {importance})</i>
-	      }
-	    </li>
-	  );
-	}
+<summary>チャレンジ問題2</summary>
 	
-	export default function PackingList() {
-	  return (
-	    <section>
-	      <h1>Sally Ride's Packing List</h1>
-	      <ul>
-	        <Item 
-	          importance={9} 
-	          name="Space suit" 
-	        />
-	        <Item 
-	          importance={0} 
-	          name="Helmet with a golden leaf" 
-	        />
-	        <Item 
-	          importance={6} 
-	          name="Photo of Tam" 
-	        />
-	      </ul>
-	    </section>
-	  );
-	}
-	```
+```js
+function Item({ name, importance }) {
+  return (
+    <li className="item">
+      {name}
+      {importance > 0 && ' '}
+      {importance > 0 &&
+	<i>(Importance: {importance})</i>
+      }
+    </li>
+  );
+}
+
+export default function PackingList() {
+  return (
+    <section>
+      <h1>Sally Ride's Packing List</h1>
+      <ul>
+	<Item 
+	  importance={9} 
+	  name="Space suit" 
+	/>
+	<Item 
+	  importance={0} 
+	  name="Helmet with a golden leaf" 
+	/>
+	<Item 
+	  importance={6} 
+	  name="Photo of Tam" 
+	/>
+      </ul>
+    </section>
+  );
+}
+```
+	
 </details>
 
 <details>
-  <summary>チャレンジ問題3</summary>
-  ```js
-  const drinks = {
-	  tea: {
-	    part: 'leaf',
-	    caffeine: '15–70 mg/cup',
-	    age: '4,000+ years'
-	  },
-	  coffee: {
-	    part: 'bean',
-	    caffeine: '80–185 mg/cup',
-	    age: '1,000+ years'
-	  }
-	};
+<summary>チャレンジ問題3</summary>
 	
-	function Drink({ name }) {
-	  const info = drinks[name];
-	  return (
-	    <section>
-	      <h1>{name}</h1>
-	      <dl>
-	        <dt>Part of plant</dt>
-	        <dd>{info.part}</dd>
-	        <dt>Caffeine content</dt>
-	        <dd>{info.caffeine}</dd>
-	        <dt>Age</dt>
-	        <dd>{info.age}</dd>
-	      </dl>
-	    </section>
-	  );
-	}
-	
-	export default function DrinkList() {
-	  return (
-	    <div>
-	      <Drink name="tea" />
-	      <Drink name="coffee" />
-	    </div>
-	  );
-	}
+```js
+const drinks = {
+  tea: {
+    part: 'leaf',
+    caffeine: '15–70 mg/cup',
+    age: '4,000+ years'
+  },
+  coffee: {
+    part: 'bean',
+    caffeine: '80–185 mg/cup',
+    age: '1,000+ years'
+  }
+};
 
-	```
+function Drink({ name }) {
+  const info = drinks[name];
+  return (
+    <section>
+      <h1>{name}</h1>
+      <dl>
+	<dt>Part of plant</dt>
+	<dd>{info.part}</dd>
+	<dt>Caffeine content</dt>
+	<dd>{info.caffeine}</dd>
+	<dt>Age</dt>
+	<dd>{info.age}</dd>
+      </dl>
+    </section>
+  );
+}
+
+export default function DrinkList() {
+  return (
+    <div>
+      <Drink name="tea" />
+      <Drink name="coffee" />
+    </div>
+  );
+}
+```
+	
 </details>
 
 
@@ -505,7 +521,8 @@ return <ul>{listItem}</ul>;
 ### 配列をフィルタする
 #### Step0.配列を作成
 <details>
-  <summary>配列</summary>
+<summary>配列</summary>
+	
 ```js: data.js
 export const people = [{
   id: 0,
@@ -539,6 +556,7 @@ export const people = [{
   imageId: 'lrWQx8l'
 }];
 ```
+	
 </details>
 
 #### Step1. `people` に対して `filter()` を呼び出し新しい`chemists`配列を**作成**
@@ -596,6 +614,7 @@ const listItems = people.map(person =>
 
 <details>
   <summary>チャレンジ問題4</summary>
+	
   ```js
 	import { Fragment } from 'react';
 	
@@ -622,6 +641,7 @@ const listItems = people.map(person =>
 	  );
 	}
 ```
+	
 </details>
 
 ### コンポーネントを純粋に保つ
