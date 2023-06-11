@@ -1,8 +1,8 @@
-参考
-[Fetch API を使うときの適切なエラー処理方法](https://zenn.dev/junki555/articles/4ab67fc78ce64c)
-[Fetch APIでデーターを取得しながらPromiseとasyc/awaitを学んだまとめ - Qiita](https://qiita.com/Abbiscuit/items/66ee955509284e941803)
-
-メモ
+参考  
+[Fetch API を使うときの適切なエラー処理方法](https://zenn.dev/junki555/articles/4ab67fc78ce64c)  
+[Fetch APIでデーターを取得しながらPromiseとasyc/awaitを学んだまとめ - Qiita](https://qiita.com/Abbiscuit/items/66ee955509284e941803)  
+    
+メモ  
 
 ```js:geolocation.js
 // ロードしてからDOM取得
