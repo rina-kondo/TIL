@@ -88,3 +88,29 @@ function Button({ onClick, children }) {
 }
 
 ```
+
+## コンポーネントのメモリ
+
+[`useState`](https://ja.react.dev/reference/react/useState) フックは、
+1. レンダー間でデータを**保持**する。
+2. 新しいデータでコンポーネントをレンダー（つまり再レンダー）するよう React に**伝える**。
+
+### state変数の追加
+Reactからuse Stateをインポート
+```js
+import { useState } from 'react';
+```
+
+state 変数(`index`)、セッタ関数(`setIndex`)の定義
+```js
+const [index, setIndex] = useState(0);
+```
+
+```js
+function handleClick() {
+  setIndex(index + 1);
+}
+```
+
+**注意:**   
+`use` で始まるフックは、コンポーネントのトップレベルまたはカスタムフック内でのみ呼び出すことができます。    
