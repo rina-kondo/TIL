@@ -65,3 +65,40 @@ Classless Inter-Domain Routing (CIDR).
 - ネットワークC：192.168.2.0/24
 - ネットワークC：192.168.3.0/24
 
+
+
+## ポートフォワーディングの設定手順
+手元のPCの~/.ssh/configに下記を追記して保存します。
+
+```
+Host [エイリアス名]
+  HostName [バッチサーバのIPアドレス(プライベート)]
+  User [バッチサーバーのユーザー名]
+  IdentityFile [バッチサーバーのキーペア]
+  ProxyCommand ssh -W %h:%p -i [踏み台サーバーのキーペア] -p 22 ec2-user@[踏み台サーバーのIPアドレス]
+```
+下記は例になります。
+```
+Host target
+  HostName 192.168.96.100
+  User ec2-user
+  IdentityFile ~/.ssh/practice-aws.pem
+  ProxyCommand ssh -W %h:%p -i ~/.ssh/practice-aws.pem -p 22 ec2-user@18.179.15.171
+※エイリアス名はバッチサーバーと分かる命名が適切です。
+```
+下記のコマンドを入力
+```
+$ ssh target
+```
+ターミナルに以下のように出力されていれば成功です。
+```
+Last login: Thu Mar 12 04:28:30 2020 from [踏み台サーバーのプライベートIP]
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-ami/2018.03-release-notes/
+[ec2-user@[バッチサーバーのホスト名] ~]$ 
+```
+
