@@ -54,9 +54,9 @@ true/falseで戻り値を返す。
 	`const Color = {   RED: 'RED',   BLUE: 'BLUE',   GREEN: 'GREEN' };  console.log(Color.RED);  // Outputs: 'RED'`
 	```
 	
-	このようにして定義した`Color`オブジェクトは、読み取り専用のプロパティを持つEnumとして機能します。
+このようにして定義した`Color`オブジェクトは、読み取り専用のプロパティを持つEnumとして機能します。
 	
-	一方で、**TypeScript** では明確な列挙型（Enum）がサポートされています。TypeScriptのEnumは、具体的な名前と値の組み合わせを持つ特別な型です。以下に例を示します：
+一方で、**TypeScript** では明確な列挙型（Enum）がサポートされています。TypeScriptのEnumは、具体的な名前と値の組み合わせを持つ特別な型です。以下に例を示します：
 	
 	```ts	
 	`enum Color {   Red = 'RED',   Blue = 'BLUE',   Green = 'GREEN' }  let myColor: Color = Color.Red;  console.log(myColor);  // Outputs: 'RED'`
