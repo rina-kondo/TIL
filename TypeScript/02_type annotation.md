@@ -100,6 +100,41 @@ type Box = { width: number; height: number };
 let box: Box = {width: 1080, height: 720};
 ```
 
+### オプショナルなプロパティの宣言
+- `プロパティ名?`で、あってもなくてもいいプロパティを宣言できる
+- `number|undefined型`といったように、undifinedを許容する
+```ts
+type MyObj ={
+	foo: boolean;
+	bar: boolean;
+	baz?: number;
+}
+
+const obj: MyObj = { foo: false, bar: turue };
+const obj2: MyObj = { foo: true, bar: false, baz: 123 };
+```
+
+### 読み取り専用プロパティ
+特にプロパティを変更するつもりがない場合、型宣言に`readonly`をつけておくと安全です.  
+```ts
+type MyObj = {
+	readonly foo: number;
+}
+const obj: MyObj = {foo: 123};
+obj.foo = 0; // [Log]:Cannot assign to 'foo' because it is a read-only property.
+```
+
+
+## typeof キーワード
+- 変数から型を読み取ってくる.  
+- 読み取りにくいコードができてしまう場合もあるので、慣れるまでは使わなくていいかも、
+```ts
+const num: number = 0;
+type T = typeof num;
+const foo: T = 123;
+```
+
+
 ## メソッドの型注釈
 ```ts
 let calculator: {
