@@ -96,7 +96,7 @@ box = { width: "1080", height: 720 }; //=>型誤りエラー
 ```
 型エイリアスを使った型注釈
 ```ts
-tyoe Box = { width: number; height: number };
+type Box = { width: number; height: number };
 let box: Box = {width: 1080, height: 720};
 ```
 
@@ -121,7 +121,7 @@ let calculator: {
 
 ## void型
 戻り値がない関数の型定義は、undefind型ではなくvoid型を指定するのが一般的。
-```
+```ts
 // bad
 function fn(): undefind {
 	// 戻り値のない関数
@@ -144,8 +144,6 @@ let mayBeNumber: number | undefined;
 mayBeNumber = f1(); // 誤った関数の使い方をコンパイルで認識できる
 mayBeNumber = f2(); // 誤った関数の使い方をコンパイルで認識できない
 ```
-
-
 
 ## 配列の型定義
 
