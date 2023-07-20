@@ -11,6 +11,10 @@ Next.js 前提
 2. `styles`ディレクトリを作ってcomponentsと同じ階層で配置  
 `components/Button.tsx`のスタイルは`styles/components/Button.module.scss`に書くパターン  
 
+## CSS Loader
+Css LoaderによってCSSにScopeという概念を生むことができます。  
+自動で CSSファイル名__CSS内クラス名__ハッシュ値 というクラスが付きます。  
+
 
 #### 参考:  
 [Styling: CSS Modules | Next.js](https://nextjs.org/docs/pages/building-your-application/styling/css-modules#global-styles)  
