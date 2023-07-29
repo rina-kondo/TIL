@@ -82,6 +82,11 @@ RESTfulとはRESTで求められている原則に従っていることを指し
 http:///example.com/api/v1/users?name="suzuki"
 ```
 
+#### Open APIの場合
+- パスパラメータ(URI): 特定のリソースを識別するために必要な情報
+- クエリパラメータ(URI): 特定のリソース操作して取得する際に必要な情報
+- リクエストボディ(JSON): 追加、更新する際の内容
+
 ### [HTTP レスポンスステータスコード](https://developer.mozilla.org/ja/docs/Web/HTTP/Status)
 
 ### レスポンスデータのフォーマット 
