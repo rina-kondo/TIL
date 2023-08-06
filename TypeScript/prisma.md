@@ -409,3 +409,28 @@ main()
 
 </details>
 
+
+# Prisma for NestJS
+#### install Prisma
+```
+npm install -D prisma
+```
+#### Initialize Prisma (create `npx prisma init`)
+```
+npx prisma init
+```
+#### `.env`    
+`[POSTGRES_USER]` と`[POSTGRES_PASSWORD]`は自分のDB設定を入力
+
+```env
+DATABASE_URL="postgres://[POSTGRES_USER]:[POSTGRES_PASSWORD]@localhost:5432/median-db"
+```
+
+#### `npx prisma db seed` コマンドの設定
+**`package.json`**
+```json
+"prisma": {
+    "seed": "ts-node prisma/seed.ts"
+}
+```
+
